@@ -83,10 +83,10 @@ DATABASES = {
 
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'microsoft',
-        'USER': 'microsoft',
-        'PASSWORD': 'nimiatsami12@',
-        'HOST': 'localhost',
+        'NAME': 'bbz6mdtfg8mgsgu0ax3y',
+        'USER': 'uibmgfozapbe5mp0',
+        'PASSWORD': 'eByGLk3qJQ7pqWupZKbQ',
+        'HOST': 'bbz6mdtfg8mgsgu0ax3y-mysql.services.clever-cloud.com',
         'PORT': '3306',
     }
 }
