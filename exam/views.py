@@ -290,9 +290,11 @@ def test(request):
 			data = {'msge':'student inserted'}
 			status = statusCodes.STATUS_SUCCESS
 			return functions.RESPONSE(data,status)
-		elif(requestMethod.custom_request_type(request.GET, 'get_student')):
-			qry = list(StudentDetails.objects.filter().values('id','name','username','pass'))
-			data = {'data':qry}
+		elif(requestMethod.custom_request_type(request.GET, 'update')):
+			qry = StudentDetails.objects.filter(id=1).update(id=1001)
+			qry = StudentDetails.objects.filter(id=2).update(id=1002)
+			qry = StudentDetails.objects.filter(id=3).update(id=1001)
+			data = {'data':'qry'}
 			status = statusCodes.STATUS_SUCCESS
 			return functions.RESPONSE(data,status)
 
