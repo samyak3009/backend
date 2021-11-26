@@ -276,6 +276,38 @@ def form_answer(get_id,student_id):
 	return data
 
 
+def test(request):
+	if(requestMethod.GET_REQUEST(request)):
+		if(requestMethod.custom_request_type(request.GET, 'insert_student')):
+			name = request.GET['name']
+			course = request.GET['course']
+			date_of_birth = request.GET['date']
+			email = request.GET['email']
+			mobile = request.GET['mobile']
+			username = request.GET['username']
+			password = request.GET['password']
+			qry = StudentDetails.objects.create(name= name,course=course,date_of_birth = datetime.date,email=email,mobile=mobile,username=username,password=password)
+			data = {'msge':'student inserted'}
+			status = statusCodes.STATUS_SUCCESS
+			return functions.RESPONSE(data,status)
+		elif(requestMethod.custom_request_type(request.GET, 'get_student')):
+			qry = list(StudentDetails.objects.filter().values('id','name','username','pass'))
+			data = {'data':qry}
+			status = statusCodes.STATUS_SUCCESS
+			return functions.RESPONSE(data,status)
+
+		else:
+			data = statusMessages.MESSAGE_FORBIDDEN
+			status = statusCodes.STATUS_FORBIDDEN
+			return functions.RESPONSE(data,status)
+	else:
+		data = statusMessages.MESSAGE_FORBIDDEN
+		status = statusCodes.STATUS_FORBIDDEN
+		return functions.RESPONSE(data,status)
+
+
+
+
 
 
 
