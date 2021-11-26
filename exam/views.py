@@ -311,7 +311,7 @@ def test(request):
 			status = statusCodes.STATUS_SUCCESS
 			return functions.RESPONSE(data,status)
 		elif(requestMethod.custom_request_type(request.GET, 'get_all_form')):
-			qry = list(ExamDetail.objects.filter().values('id','course','subject','status','start_date','end_date'))
+			qry = list(ExamDetail.objects.filter().values('id','course','subject','status','start_time','end_time','exam_title'))
 			data = {'data':qry}
 			status = statusCodes.STATUS_SUCCESS
 			return functions.RESPONSE(data,status)
