@@ -91,17 +91,10 @@ DATABASES = {
         'PASSWORD': 'eByGLk3qJQ7pqWupZKbQ',
         'HOST': 'bbz6mdtfg8mgsgu0ax3y-mysql.services.clever-cloud.com',
         'PORT': '3306',
+          'OPTIONS': {
+              'init_command': "SET sql_mode ='STRICT_TRANS_TABLES'"
+               }
     }
-
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #     'HOST': 'localhost',
-    #     'NAME': 'microsoft',
-    #     'USER': 'microsoft',
-    #     'PASSWORD': 'nimiatsami12@',
-    #     'PORT': '3306',
-    # }
 }
 
 
