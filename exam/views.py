@@ -205,7 +205,8 @@ def submit_answer(request):
 	elif(requestMethod.GET_REQUEST(request)):
 		stu_id = request.GET['student_id']
 		obj = list(ExamSession.objects.filter(student_id=stu_id).exclude(form_id__status='DELETE').values('form_id','form_id__course','form_id__subject','form_id__start_time','form_id__end_time','form_id__exam_title','form_id__date_of_exam','student_id','form_status'))
-		now_time  = datetime.datetime.now(timezone("Asia/Kolkata"))
+		now_time1  = datetime.datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
+		now_time = datetime.datetime.strptime(now_time1, '%Y-%m-%d %H:%M:%S')
 		print(now_time)
 		data={}
 		data['live'] = []
