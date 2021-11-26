@@ -286,7 +286,7 @@ def test(request):
 			mobile = request.GET['mobile']
 			username = request.GET['username']
 			password = request.GET['password']
-			qry = StudentDetails.objects.create(name= name,course=course,date_of_birth = datetime.date,email=email,mobile=mobile,username=username,password=password)
+			qry = StudentDetails.objects.create(name= name,course=course,date_of_birth = date_of_birth,email=email,mobile=mobile,username=username,password=password)
 			data = {'msge':'student inserted'}
 			status = statusCodes.STATUS_SUCCESS
 			return functions.RESPONSE(data,status)
