@@ -92,7 +92,7 @@ DATABASES = {
         'HOST': 'bbz6mdtfg8mgsgu0ax3y-mysql.services.clever-cloud.com',
         'PORT': '3306',
     }
-    
+
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
