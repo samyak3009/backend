@@ -297,7 +297,7 @@ def test(request):
 			data = {'data':'qry'}
 			status = statusCodes.STATUS_SUCCESS
 			return functions.RESPONSE(data,status)
-		elif(requestMethod.custom_request_type(request.GET, 'update')):
+		elif(requestMethod.custom_request_type(request.GET, 'get_student')):
 			qry = list(StudentDetails.objects.filter().values('id','course','username','name','password'))
 			data = {'data':qry}
 			status = statusCodes.STATUS_SUCCESS
