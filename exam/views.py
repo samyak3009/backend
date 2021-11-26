@@ -37,7 +37,8 @@ def login(request):
 			return functions.RESPONSE(data,statusCodes.STATUS_CONFLICT_WITH_MESSAGE)
 		start_time = datetime.datetime.strptime(obj[0]['form_id__start_time'], '%Y-%m-%d %H:%M:%S')
 		end_time = datetime.datetime.strptime(obj[0]['form_id__end_time'], '%Y-%m-%d %H:%M:%S')
-		now_time  = datetime.datetime.now()
+		now_time1  = datetime.datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
+		now_time = datetime.datetime.strptime(now_time1, '%Y-%m-%d %H:%M:%S')
 		if(start_time<=now_time and now_time <= end_time):
 			data = get_form(form_id)
 			data['start_time'] = start_time
@@ -95,7 +96,8 @@ def create_form(request):
 	elif(requestMethod.GET_REQUEST(request)):
 		if(requestMethod.custom_request_type(request.GET, 'get_form')):
 			exam = list(ExamDetail.objects.filter(status='INSERT').values('id','subject','course','start_time','end_time','exam_title'))
-			now_time  = datetime.datetime.now()
+			now_time1  = datetime.datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
+			now_time = datetime.datetime.strptime(now_time1, '%Y-%m-%d %H:%M:%S')
 			data = []
 			for x in exam:
 				start_time = datetime.datetime.strptime(x['start_time'], '%Y-%m-%d %H:%M:%S')
@@ -127,7 +129,8 @@ def submit_answer(request):
 		obj = list(ExamSession.objects.filter(student_id = data['student_id'],form_id = data['form_id']).values('id','form_status','form_id__date_of_exam','form_id__start_time','form_id__end_time','form_id__course','form_id__subject','form_id__exam_title'))
 		start_time = datetime.datetime.strptime(obj[0]['form_id__start_time'], '%Y-%m-%d %H:%M:%S')
 		end_time = datetime.datetime.strptime(obj[0]['form_id__end_time'], '%Y-%m-%d %H:%M:%S')
-		now_time  = datetime.datetime.now()
+		now_time1  = datetime.datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
+		now_time = datetime.datetime.strptime(now_time1, '%Y-%m-%d %H:%M:%S')
 		if(obj[0]['form_status'] == 1):
 			data = {'msg':'your response has already been submitted'}
 			return functions.RESPONSE(data,statusCodes.STATUS_CONFLICT_WITH_MESSAGE)
@@ -240,7 +243,8 @@ def check_status(request):
 			for x in qry:
 				start_time = datetime.datetime.strptime(x['start_time'], '%Y-%m-%d %H:%M:%S')
 				end_time = datetime.datetime.strptime(x['end_time'], '%Y-%m-%d %H:%M:%S')
-				now_time  = datetime.datetime.now()
+				now_time1  = datetime.datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
+				now_time = datetime.datetime.strptime(now_time1, '%Y-%m-%d %H:%M:%S')
 				if(end_time<now_time):
 					data.append(x)
 			status = statusCodes.STATUS_SUCCESS
