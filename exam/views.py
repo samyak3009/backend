@@ -19,7 +19,7 @@ def login(request):
 		passw = data['pass'].split(' ')[1].strip()
 		passw=base64.b64decode(passw).decode('utf-8')
 		print(passw)
-		stu_id = list(StudentDetails.objects.filter(id=1001).values('id','name','email','date_of_birth','mobile','username','course'))
+		stu_id = list(StudentDetails.objects.filter(username=user,password=passw).values('id','name','email','date_of_birth','mobile','username','course'))
 		print(len(stu_id),user,passw)
 		if len(stu_id)==0:
 			return functions.RESPONSE(statusMessages.MESSAGE_LOGIN_UNAUTHORIZED,statusCodes.STATUS_UNAUTHORIZED)
