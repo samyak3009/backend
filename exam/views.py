@@ -316,6 +316,16 @@ def test(request):
 			data = {'data':'success cleared all data'}
 			status = statusCodes.STATUS_SUCCESS
 			return functions.RESPONSE(data,status)
+		elif(requestMethod.custom_request_type(request.GET, 'clear_data_id')):
+			# qry = ExamAnswer.objects.all().delete()
+			id = request.GET['id']
+			qry = ExamDetail.objects.filter(id=id).update(status='DELETE')
+			# qry2 = ExamSession.objects.all().delete()
+			# qry3 = ExamAttribute.objects.all().delete()
+			# qry4 = ExamDetail.objects.all().delete()
+			data = {'data':'success cleared all data'}
+			status = statusCodes.STATUS_SUCCESS
+			return functions.RESPONSE(data,status)
 		elif(requestMethod.custom_request_type(request.GET, 'get_all_form')):
 			qry = list(ExamDetail.objects.filter().values('id','course','subject','status','start_time','end_time','exam_title'))
 			data = {'data':qry}
